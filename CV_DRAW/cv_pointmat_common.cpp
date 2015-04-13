@@ -31,3 +31,12 @@ void divide_pointmat_by_z(cv::Mat& projected){
 		projected(cv::Range(2, 3), cv::Range(0, projected.cols)),
 		projected(cv::Range(2, 3), cv::Range(0, projected.cols)));
 }
+
+cv::Mat pointvec_to_pointmat(std::vector<cv::Vec4f>& pointvec){
+
+	cv::Mat pointmat_r(1, pointvec.size(), CV_32FC4, pointvec.data());
+	cv::Mat pointmat_t = pointmat_r.reshape(1, pointvec.size());
+	cv::Mat pointmat = pointmat_t.t();
+
+	return pointmat;
+}
