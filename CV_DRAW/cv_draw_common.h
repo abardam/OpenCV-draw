@@ -13,7 +13,6 @@ struct CroppedMat{
 		mSize(0, 0){}
 };
 
-void draw_pointmat_on_image(cv::Mat& image, const cv::Mat& pointmat, const cv::Vec3b& color);
 void draw_linesegmat_on_image(cv::Mat& image, const cv::Mat& linesegmat, const cv::Vec3b& color);
 
 //convert to and from cropped mats
@@ -24,3 +23,9 @@ cv::Mat uncrop_mat(const CroppedMat& cropped_mat, const cv::Vec3b& color);
 //serialization for cropped cv mat
 void write(cv::FileStorage& fs, const std::string&, const CroppedMat& n);
 void read(const cv::FileNode& node, CroppedMat& n, const CroppedMat& default_value = CroppedMat());
+
+
+//convenience function
+cv::Mat create_translation_mat(cv::Vec3f translation);
+
+cv::Mat visualize_float(const cv::Mat& float_mat);

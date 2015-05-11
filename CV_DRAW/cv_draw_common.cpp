@@ -1,15 +1,6 @@
 #include "cv_draw_common.h"
 
 
-void draw_pointmat_on_image(cv::Mat& image, const cv::Mat& pointmat, const cv::Vec3b& color){
-	for (int i = 0; i < pointmat.cols; ++i){
-		int x = pointmat.ptr<float>(0)[i];
-		int y = pointmat.ptr<float>(1)[i];
-		if (CLAMP(x, y, image.cols, image.rows)){
-			image.ptr<cv::Vec3b>(y)[x] = color;
-		}
-	}
-}
 
 void draw_linesegmat_on_image(cv::Mat& image, const cv::Mat& linesegmat, const cv::Vec3b& color){
 	for (int i = 0; i < linesegmat.cols; i+=2){
@@ -145,4 +136,18 @@ void read(const cv::FileNode& node, CroppedMat& n, const CroppedMat& default_val
 		node["offset"] >> n.mOffset;
 		node["size"] >> n.mSize;
 	}
+}
+
+cv::Mat create_translation_mat(cv::Vec3f translation){
+	cv::Mat ret = cv::Mat::eye(4, 4, CV_32F);
+	ret.ptr<float>(0)[3] = translation(0);
+	ret.ptr<float>(1)[3] = translation(1);
+	ret.ptr<float>(2)[3] = translation(2);
+	return ret;
+}
+
+cv::Mat visualize_float(const cv::Mat& float_mat){
+	cv::Mat norm_mat;
+	cv::normalize(float_mat, norm_mat, 0, 255, cv::NORM_MINMAX, CV_8U);
+	return norm_mat;
 }
