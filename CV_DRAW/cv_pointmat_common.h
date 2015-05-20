@@ -11,3 +11,5 @@ void draw_pointmat_on_image(cv::Mat& image, const cv::Mat& pointmat, const cv::V
 cv::Mat pointvec_to_pointmat(std::vector<cv::Vec4f>& pointvec);
 void display_pointmat(const std::string& window_name, int window_width, int window_height, const cv::Mat& camera_matrix, const cv::Mat& camera_pose_orig,
 	const std::vector<cv::Mat>& pointmats, const std::vector<cv::Vec3b>& colors);
+void display_pointmat(const std::string& window_name, int window_width, int window_height, const cv::Mat& camera_matrix, const cv::Mat& camera_pose_orig,
+	const cv::Mat& pointmat, const cv::Vec3b& color);

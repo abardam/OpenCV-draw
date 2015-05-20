@@ -210,3 +210,12 @@ void display_pointmat(const std::string& window_name, int window_width, int wind
 		}
 	}
 }
+
+void display_pointmat(const std::string& window_name, int window_width, int window_height, const cv::Mat& camera_matrix, const cv::Mat& camera_pose_orig,
+	const cv::Mat& pointmat, const cv::Vec3b& color){
+	std::vector<cv::Mat> v_m;
+	v_m.push_back(pointmat);
+	std::vector<cv::Vec3b> v_c;
+	v_c.push_back(color);
+	display_pointmat(window_name, window_width, window_height, camera_matrix, camera_pose_orig, v_m, v_c);
+}
