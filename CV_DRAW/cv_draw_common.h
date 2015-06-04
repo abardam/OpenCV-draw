@@ -18,7 +18,7 @@ void draw_linesegmat_on_image(cv::Mat& image, const cv::Mat& linesegmat, const c
 //convert to and from cropped mats
 CroppedMat crop_mat(const cv::Mat& mat, const cv::Vec3b crop_color);
 CroppedMat crop_mat(const cv::Mat& mat, const std::vector<cv::Vec3b>& crop_colors);
-cv::Mat uncrop_mat(const CroppedMat& cropped_mat, const cv::Vec3b& color);
+cv::Mat uncrop_mat(const CroppedMat& cropped_mat, const cv::Vec3b& color = cv::Vec3b(0xff,0xff,0xff));
 
 //serialization for cropped cv mat
 void write(cv::FileStorage& fs, const std::string&, const CroppedMat& n);
