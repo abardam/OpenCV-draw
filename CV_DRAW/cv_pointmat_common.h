@@ -3,6 +3,9 @@
 #include <functional>
 
 cv::Mat filter_pointmat(const cv::Mat& in, std::function<bool(const cv::Vec4f&, void*)> criteria, void* data);
+
+
+//Take Care: don't use the z-value
 void divide_pointmat_by_z(cv::Mat& pointmat);
 
 //call divide_pointmat_by_z before calling this

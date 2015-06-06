@@ -18,7 +18,7 @@ cv::Mat filter_pointmat(const cv::Mat& in, std::function<bool(const cv::Vec4f&, 
 	return in_filter_t.t();
 }
 
-
+//Take Care: don't use the z-value
 void divide_pointmat_by_z(cv::Mat& projected){
 	cv::divide(projected(cv::Range(0, 1), cv::Range(0, projected.cols)),
 		projected(cv::Range(2, 3), cv::Range(0, projected.cols)),
@@ -28,9 +28,9 @@ void divide_pointmat_by_z(cv::Mat& projected){
 		projected(cv::Range(2, 3), cv::Range(0, projected.cols)),
 		projected(cv::Range(1, 2), cv::Range(0, projected.cols)));
 
-	cv::divide(projected(cv::Range(2, 3), cv::Range(0, projected.cols)),
-		projected(cv::Range(2, 3), cv::Range(0, projected.cols)),
-		projected(cv::Range(2, 3), cv::Range(0, projected.cols)));
+	//cv::divide(projected(cv::Range(2, 3), cv::Range(0, projected.cols)),
+	//	projected(cv::Range(2, 3), cv::Range(0, projected.cols)),
+	//	projected(cv::Range(2, 3), cv::Range(0, projected.cols)));
 }
 
 cv::Mat pointvec_to_pointmat(std::vector<cv::Vec4f>& pointvec){
