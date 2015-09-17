@@ -60,6 +60,11 @@ CroppedMat crop_mat(const cv::Mat& mat, const std::vector<cv::Vec3b>& crop_color
 		x2 = 0,
 		y2 = 0;
 
+	if (mat.empty()){
+
+		return CroppedMat();
+	}
+
 	for (unsigned int _x = 0; _x < mat.cols; ++_x){
 		for (unsigned int _y = 0; _y < mat.rows; ++_y){
 
